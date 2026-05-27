@@ -1,16 +1,16 @@
 spring:
   application:
     name: FlightBooking_API
-    ai:
-      retry:
-        max-attempts: 1
-      openai:
-        api-key: ${OPENAI_API_KEY}
-        chat:
-          options:
-            model: gpt-4o
-            max-tokens: 1024
-            temperature: 0.2
+  ai:
+    retry:
+      max-attempts: 1
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      chat:
+        options:
+          model: gpt-4o
+          max-tokens: 1024
+          temperature: 0.2
           memory:
             repository:
               jdbc:

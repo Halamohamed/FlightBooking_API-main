@@ -1,6 +1,8 @@
 package se.lexicon.flightbooking_api.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.ai.tool.annotation.Tool;
+import org.springframework.context.annotation.Description;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import se.lexicon.flightbooking_api.dto.AvailableFlightDTO;
@@ -27,6 +29,8 @@ public class FlightBookingServiceImpl implements FlightBookingService {
 
 
     @Override
+    @Tool(description = "Book a flight")
+    @Description("Return a Booking details")
     public FlightBookingDTO bookFlight(Long flightId, BookFlightRequestDTO bookingRequest) {
         FlightBooking flight = flightBookingRepository.findById(flightId)
                 .orElseThrow(() -> new ResourceNotFoundException("Flight not found"));
@@ -44,6 +48,8 @@ public class FlightBookingServiceImpl implements FlightBookingService {
     }
 
     @Override
+    @Tool(description = "cancel a flight")
+    @Description("To cancel a booked flight and return nothing")
     public void cancelFlight(Long flightId, String passengerEmail) {
         FlightBooking flight = flightBookingRepository.findById(flightId)
                 .orElseThrow(() -> new ResourceNotFoundException("Flight not found"));
@@ -63,6 +69,8 @@ public class FlightBookingServiceImpl implements FlightBookingService {
     }
 
     @Override
+    @Tool(description = "Get all available flights")
+    @Description("Return a collection of all available flights")
     public List<AvailableFlightDTO> findAvailableFlights() {
         return flightBookingRepository.findByStatus(FlightStatus.AVAILABLE)
                 .stream()
@@ -71,6 +79,8 @@ public class FlightBookingServiceImpl implements FlightBookingService {
     }
 
     @Override
+    @Tool(description = "Find a Booked flight by an email")
+    @Description("Return a collection of Booked flight by email")
     public List<FlightBookingDTO> findBookingsByEmail(String email) {
         return flightBookingRepository.findByPassengerEmailAndStatus(email, FlightStatus.BOOKED)
                 .stream()
@@ -79,6 +89,8 @@ public class FlightBookingServiceImpl implements FlightBookingService {
     }
 
     @Override
+    @Tool(description = "Get all flights")
+    @Description("Return a collection of flight to Book a flight")
     public List<FlightListDTO> findAll() {
         return flightBookingRepository.findAll()
                 .stream()

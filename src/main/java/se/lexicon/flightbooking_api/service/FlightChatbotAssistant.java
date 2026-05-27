@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class FlightChatbotAssistant {
     private final ChatClient chatClient;
+    private final FlightBookingService flightBookingService;
 
     public FlightChatbotAssistant(ChatClient.Builder chatBuilder, ChatMemory chatMemory, FlightBookingService flightBookingService) {
+       this.flightBookingService = flightBookingService;
         this.chatClient = chatBuilder
                 .defaultAdvisors(
                         MessageChatMemoryAdvisor.builder(chatMemory).build()
