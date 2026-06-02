@@ -19,4 +19,10 @@ public record AvailableFlightDTO(
         Double price,
         @Positive(message = "Seats must be positive")
         Integer seats
-) {}
+) {
+
+
+
+
+
+}

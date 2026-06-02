@@ -1,3 +1,8 @@
 package se.lexicon.flightbooking_api.dto;
 
-public record ChatResponseDTO(String answer) {}
+import se.lexicon.flightbooking_api.entity.FlightBooking;
+
+public record ChatResponseDTO(String reply
+) {
+
+}

@@ -3,6 +3,7 @@ package se.lexicon.flightbooking_api.controller;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import se.lexicon.flightbooking_api.dto.AvailableFlightDTO;
 import se.lexicon.flightbooking_api.dto.ChatRequestDTO;
 import se.lexicon.flightbooking_api.dto.ChatResponseDTO;
 import se.lexicon.flightbooking_api.service.FlightChatbotAssistant;
