@@ -1,0 +1,5 @@
+target/
+.get
+.getignore
+README.md
+Dockerfile
