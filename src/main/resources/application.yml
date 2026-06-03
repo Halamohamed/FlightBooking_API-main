@@ -56,3 +56,5 @@ app:
     allow-credentials: true
 
 kind: Application
+server:
+  port: ${PORT:8080}
