@@ -48,7 +48,8 @@ class FlightBookingControllerTest {
                 .andExpect(jsonPath("$.length()").value(2))
                 .andExpect(jsonPath("$[0].flightNumber").exists())
                 .andExpect(jsonPath("$[1].flightNumber").exists())
-                .andExpect(jsonPath("$[0].seats").value(20));
+                .andExpect(jsonPath("$[0].destination").exists())
+                .andExpect(jsonPath("$[0].seats").value(1));
     }
 
     @Test
@@ -60,7 +61,8 @@ class FlightBookingControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.length()").value(1))
                 .andExpect(jsonPath("$[0].flightNumber").value("FL001"))
-                .andExpect(jsonPath("$[0].seats").value(20));
+                .andExpect(jsonPath("$[0].destination").value("London"))
+                .andExpect(jsonPath("$[0].seats").value(1));
     }
 
     @Test
@@ -82,7 +84,7 @@ class FlightBookingControllerTest {
                 .andExpect(jsonPath("$.passengerName").value("Jane Doe"))
                 .andExpect(jsonPath("$.passengerEmail").value("jane@example.com"))
                 .andExpect(jsonPath("$.status").value("BOOKED"))
-                .andExpect(jsonPath("$.seats").value(20));
+                .andExpect(jsonPath("$.seats").value(1));
 
         FlightBooking savedFlight = flightBookingRepository.findById(availableFlight.getId()).orElseThrow();
         assertThat(savedFlight.getStatus()).isEqualTo(FlightStatus.BOOKED);
@@ -147,7 +149,7 @@ class FlightBookingControllerTest {
                 .status(status)
                 .destination(destination)
                 .price(199.99)
-                .seats(20)
+                .seats(1)
                 .build();
     }
 }
