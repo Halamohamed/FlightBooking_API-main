@@ -1,7 +1,8 @@
 #Use a lightweight JDK image
 FROM maven:3.8.3-openjdk-17 AS build
 COPY . .
-RUN mvn clean install
+#RUN mvn clean install
+
 
 #
 #Package Stage
